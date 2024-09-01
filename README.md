@@ -1,6 +1,6 @@
 # MCSC202-PCA-
 ## About
-MCSC 202 Mini-Project : Principal Component Analysis in Image Processing
+MCSC 202 (Numerical Methods) Mini-Project : Principal Component Analysis in Image Processing
 ## Instructions to Run the Project
 * Run the command in Anaconda: ```python Face_Recognition.py```
 ## Project Demo
