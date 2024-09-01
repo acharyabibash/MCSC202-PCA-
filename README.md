@@ -6,7 +6,7 @@ MCSC 202 Mini-Project : Principal Component Analysis in Image Processing
 ## Project Demo
 [Project Demo Video Link](https://www.dropbox.com/scl/fi/hn7s8mgskge20vtpadnum/PCA_Demo.mp4?rlkey=hbkkrzfbbtwjtek2d86j6opq5&st=2ud4r3qc&dl=0)
 ## Screenshots
-![original_Image](screenshots/originalImage.jpg)
+![original_Image](screenshots/original_Image.jpg)
 *originalImage*
 ![eigenFace](screenshots/eigenFace.jpg)
 *eigenFace*
