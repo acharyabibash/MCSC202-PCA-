@@ -42,12 +42,16 @@ img_width, img_height = 50, 50
 
 if algo_type == "pca":
     i_t_m_c = images_to_matrix_class(images_names, img_width, img_height)
+    print("type of itmc:",type(i_t_m_c))
+    print(i_t_m_c)
 else:
     i_t_m_c = images_to_matrix_class_for_two_d(images_names, img_width, img_height)
 
 scaled_face = i_t_m_c.get_matrix()
+print("scaled_face",scaled_face.shape)
 
 if algo_type == "pca":
+    print("original Image : ",img_height, img_width )
     cv2.imshow("Original Image" , cv2.resize(np.array(np.reshape(scaled_face[:,1],[img_height, img_width]), dtype = np.uint8),(200, 200)))
     cv2.waitKey()
 else:

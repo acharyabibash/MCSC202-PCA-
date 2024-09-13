@@ -14,6 +14,7 @@ class pca_class:
         while temp < sum_85:
             temp += d[p]
             p += 1
+        # print("value of p and d : " ,p ,d)
         return p
 
     def reduce_dim(self):
@@ -24,6 +25,7 @@ class pca_class:
         q_matrix = np.matrix(q)
         p = self.give_p(d)
         self.new_bases = p_matrix[:, 0:p]
+        print("new bases",self.new_bases.shape)
         self.new_coordinates = np.dot(self.new_bases.T, self.images)
         return self.new_coordinates.T
 
@@ -47,6 +49,7 @@ class pca_class:
         min_orig = np.min(ev)
         max_orig = np.max(ev)
         ev = min_pix_int + (((max_pix_int - min_pix_int)/(max_orig - min_orig)) * ev)
+        print(ev.shape,"evshape")
         ev_re = np.reshape(ev, (height, width))
         cv2.imshow("Eigen Face " + str(eig_no),  cv2.resize(np.array(ev_re, dtype = np.uint8),(200, 200)))
         cv2.waitKey()
