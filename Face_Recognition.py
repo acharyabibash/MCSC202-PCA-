@@ -5,6 +5,12 @@ import numpy as np
 # importing algorithms
 from PCA import pca_class
 
+import os
+
+# Ensure the 'output' directory exists, create it if not
+output_dir = "output"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 # importing feature extraction classes
 from images_to_matrix import images_to_matrix_class
@@ -54,13 +60,18 @@ if algo_type == "pca":
     print("original Image : ",img_height, img_width )
     cv2.imshow("Original Image" , cv2.resize(np.array(np.reshape(scaled_face[:,1],[img_height, img_width]), dtype = np.uint8),(200, 200)))
     cv2.waitKey()
+    # Reshape and scale the face data
+    original_image = np.reshape(scaled_face[:,1], [img_height, img_width])
+    original_image_path = os.path.join(output_dir, "original_image.jpg")
+    # Save the original image in JPG format
+    cv2.imwrite(original_image_path, np.array(original_image, dtype=np.uint8))
 else:
     cv2.imshow("Original Image" , cv2.resize(scaled_face[0],(200, 200)))
     cv2.waitKey()
 
 #Algo
 if algo_type == "pca":
-    my_algo = pca_class(scaled_face, y, target_names, no_of_elements, 45)
+    my_algo = pca_class(scaled_face, y, target_names, no_of_elements, 25)
 
 
 
@@ -71,6 +82,11 @@ if algo_type == "pca":
 if algo_type == "pca":
     cv2.imshow("After PCA Image", cv2.resize(np.array(np.reshape(my_algo.original_data(new_coordinates[1, :]), [img_height, img_width]), dtype = np.uint8), (200, 200)))
     cv2.waitKey()
+    # Reshape and scale the after PCA data
+    after_pca_image = np.reshape(my_algo.original_data(new_coordinates[1, :]), [img_height, img_width])
+    afterpca_image_path = os.path.join(output_dir, "after_pca_image.jpg")
+    # Save the after PCA image in JPG format
+    cv2.imwrite(afterpca_image_path, np.array(after_pca_image, dtype=np.uint8))
 else:
     cv2.imshow("After PCA Image", cv2.resize(np.array(my_algo.original_data(new_coordinates[0]), dtype = np.uint8), (200, 200)))
     cv2.waitKey()
